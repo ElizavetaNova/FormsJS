@@ -1,0 +1,41 @@
+{
+  "members": [
+    {
+      "firstNameRider": "Никита",
+      "lastNameRider": "Когор",
+      "dateBirthdayRider": "2022-04-27",
+      "phone": "+79245689587",
+      "email": "jhn@ma.ru",
+      "nameHorse": "Жора",
+      "ageHorse": "3",
+      "colorHorse": "Вороная",
+      "horseBreed": "Фриз",
+      "city": "khv",
+      "competition": [
+        "dressage",
+        "jumping"
+      ],
+      "participationEarlier": "yes",
+      "id": 1
+    },
+    {
+      "firstNameRider": "Viliam",
+      "lastNameRider": "Golotov",
+      "dateBirthdayRider": "2000-11-22",
+      "phone": "+79995688965",
+      "email": "gol@ya.ru",
+      "nameHorse": "Golop",
+      "ageHorse": "8",
+      "colorHorse": "Grey",
+      "horseBreed": "Appoluza",
+      "city": "blg",
+      "competition": [
+        "dressage",
+        "jumping",
+        "triathlon"
+      ],
+      "participationEarlier": "yes",
+      "id": 2
+    }
+  ]
+}

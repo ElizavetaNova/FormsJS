@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<link href="css/index.css" rel="stylesheet">-->
+    <script defer src="send-data.js"></script>
+    <script defer src="valid.js"></script>
+    <script type="module" src="table.js"></script>
+</head>
+<body>
+    <form class="flex-column" id="applicant-form" name="applicantForm" action="#">
+        <label>
+            Имя наездника:
+            <input name="firstNameRider" type="text">
+        </label>
+        <label>
+            Фамилия наездника:
+            <input name="lastNameRider" type="text">
+        </label>
+
+        <label>
+            Дата рождения наездника:
+            <input name="dateBirthdayRider" type="date">
+            <!--<input name="age-rider" type="number" min="16" max="45" required>-->
+        </label>
+        <label>
+            Телефон:
+            <input id="phone" placeholder="Телефон" name="phone" type="tel">
+        </label>
+        <label>
+            E-mail:
+            <input id="email" placeholder="Почта" name="email" type="email">
+        </label>
+        <label>
+            Кличка лошади:
+            <input name="nameHorse" type="text">
+        </label>
+        <label>
+            Возраст лошади:
+            <input name="ageHorse" type="number" min="2" max="15">
+        </label>
+        <label>
+            Масть лошади:
+            <input name="colorHorse" type="text">
+        </label>
+        <label>
+            Порода лошади:
+            <input name="horseBreed" type="text">
+        </label>
+
+        <select name="city">
+            <option value="khv">Хабаровск</option>
+            <option value="kms">Комсомольск на Амуре</option>
+            <option value="vdk">Владивосток</option>
+            <option value="blg">Благовещенск</option>
+            <option value="bel">Белогорск</option>
+        </select>
+
+        <fieldset class="flex-column">
+            <legend>Выберите соревнования</legend>
+            <label>
+                <input name="competition" value="dressage" type="checkbox">
+                Выездка
+            </label>
+            <label>
+                <input name="competition" value="jumping" type="checkbox">
+                Конкур
+            </label>
+            <label>
+                <input name="competition" value="racing" type="checkbox">
+                Скачки
+            </label>
+            <label>
+                <input name="competition" value="triathlon" type="checkbox">
+                Троеборье
+            </label>
+            <label>
+                <input name="competition" value="Vaulting" type="checkbox">
+                Вольтижировка
+            </label>
+        </fieldset>
+        <fieldset name="Majority" class="flex-column">
+            <legend>Вы учавствовали ранее в наших соревноваиях?</legend>
+            <label>
+                <input name="participationEarlier" value="yes" type="radio" checked required>
+                Да
+            </label>
+            <label>
+                <input name="participationEarlier" value="no" type="radio" required>
+                Нет
+            </label>
+        </fieldset>
+        <p id="sended-data"></p>
+        <button id="applicantFormSubmit" class="submit">
+            Sumbit
+        </button>
+    </form>
+    <table>
+        <thead class="table-brief__title">
+            <tr>
+                <th>Наездник</th>
+                <th>Дата рождения</th>
+                <th>Телефон</th>
+                <th>e-mail</th>
+                <th>Кличка лошади</th>
+                <th>Возраст лошади</th>
+                <th>Масть</th>
+                <th>Порода</th>
+                <th>Город</th>
+                <th>Выбранные соревнования</th>
+                <th>Телефон</th>
+                <th>Участие ранее</th>
+            </tr>
+        </thead>
+        <tbody id="table">
+        </tbody>
+    </table>
+</body>
+
+</html>
