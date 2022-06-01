@@ -1,16 +1,20 @@
-const requiredFields = ['firstNameRider', 'lastNameRider', 'dateBirthdayRider', 'email', 'nameHorse', 'city']
-const textFields = ['firstNameRider', 'lastNameRider', 'nameHorse', 'colorHorse', 'horseBreed']
+const requiredFields = ['firstNameRider', 'lastNameRider', 'dateBirthdayRider', 'email', 'nameHorse', 'city'];
+const textFields = ['firstNameRider', 'lastNameRider', 'nameHorse', 'colorHorse', 'horseBreed'];
+const RUSSIAN_REGEX = /^[А-Яа-я]{2,}$/;
 
 window.addEventListener('load', () => {
     const inputs = Array.from(document.querySelectorAll('#applicant-form input'));
+    console.log(inputs);
 
-    inputs.filter(input => requiredFields.includes(input.name))
-        .forEach(input => input.required = true);
-
-    inputs.filter(input => textFields.includes(input.name))
+    inputs.filter(input => textFields.includes(input.id))
         .forEach(input => input.pattern = '^[А-Я][а-я]{2,}$');
 
     console.log(document.getElementsByName('lastNameRider').pattern);
+
+    inputs.filter(input => requiredFields.includes(input.id))
+        .forEach(input => input.required = true);
+
+    
 
     const dateBirthday = document.querySelector('input[name=dateBirthdayRider]');
     dateBirthday.addEventListener('click', () => {
@@ -28,47 +32,62 @@ window.addEventListener('load', () => {
 
         let maxDateMy = maxYear + '-' + month + '-' + day;
 
-        //let minYear = dtToday.getFullYear() - 30;
-        //let minDateMy = minYear + '-' + month + '-' + day;
-
         document.getElementById('dateBirthdayRider').setAttribute("max", maxDateMy);
-        //document.getElementById('dateBirthdayRider').setAttribute("min", minDateMy);
     });
 
-    
-    //inputs.filter(input => textFields.includes(input.name))
-    //.forEach(input => input.setCustomValidity('Вводите данные крилицей, начиная с заглавной буквы.'));
-    
-    /*inputs.filter(input => textFields.includes(input.name))*/
-    //textInputs.forEach(input => {
-    //        input.addEventListener('input', () => {
-    //            if (input.value == "") {
-    //                errorParagraph = document.createElement('p');
-    //                errorParagraph.style.color = "#FF0000";
-    //                errorParagraph.innerText = "Ты че Пендосина?!"
-    //                input.parentNode.appendChild(errorParagraph);
-    //            }
-    //        })
-    //    });
-                
-            
-    //for (var i = 0; i < inputs.length; i++) {
-    //    inputs[i].setCustomValidity('Plz enter on Alphabets');
-    //    parent = inputs[i].parentNode;
-    //    parent.insertAdjacentHTML("beforeend", "<div class='error-message'>" +
-    //        inputs[i].validationMessage +
-    //        "</div>");
-    //}
+    const firstNameRider = document.querySelector('input[name=firstNameRider]');
+    firstNameRider.addEventListener('input', () => {
+        validationTypeText(firstNameRider);
+    });
+    const lastNameRider = document.querySelector('input[name=lastNameRider]');
+    lastNameRider.addEventListener('input', () => {
+        validationTypeText(lastNameRider);
+    });
+    const nameHorse = document.querySelector('input[name=nameHorse]');
+    nameHorse.addEventListener('input', () => {
+        validationTypeText(nameHorse);
+    });
+    const colorHorse = document.querySelector('input[name=colorHorse]');
+    colorHorse.addEventListener('input', () => {
+        validationTypeText(colorHorse);
+    });
+    const horseBreed = document.querySelector('input[name=horseBreed]');
+    horseBreed.addEventListener('input', () => {
+        validationTypeText(horseBreed);
+    });
 
+    //let typeTextInputs = [];
+    //inputs.forEach(input => {
+    //    if (input.type == 'text') {
+    //        typeTextInputs.push(input);
+    //    }
+    //});
+    //console.log(typeTextInputs);
+
+
+    //const typeTextInputs = Array.from(document.querySelector('input[type=text]'));
+    //console.log(typeTextInputs);
+    //typeTextInputs.forEach(input => {
+    //    input.addEventListener('input', () => {
+    //        validationTypeText(input);
+    //    })
+    //});
     
-    //const regex = new RegExp("^\+7[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}$", 'g');
-    //const phoneInput = inputs.find(input => input.name === 'phone');
-    //phoneInput.pattern = regex;
-    //console.log(phoneInput.pattern);
-    //phoneInput.pattern = '^((8|\+7)[\-]?)?(\(?\d{3}\)?[\-]?)?[\d\-]{7,10}$';
-        
-    //phoneInput.value = "+7(___)___-__-__"    
-    //phoneInput.placeholder = "+7(___)___-__-__"
+});
+let errorParagraph = null;
+function validationTypeText(input) {
+    const russian = !!input.value.match(RUSSIAN_REGEX);
+    const isFilled = input.value.length > 0;  
+
+    if (isFilled && !russian && !errorParagraph) {
+        errorParagraph = document.createElement('p');
+        errorParagraph.style.color = "#FF0000";
+        errorParagraph.innerText = "Заполните поле кирилицей, начиная с заглавной буквы"
+        input.parentNode.appendChild(errorParagraph);
+    }
+    else if (russian && errorParagraph){
+        errorParagraph.remove();
+    }
+}
      
 
-});
