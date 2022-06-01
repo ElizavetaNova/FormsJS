@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!--<link href="css/index.css" rel="stylesheet">-->
+    <link href="styles/style.css" rel="stylesheet">
     <script defer src="send-data.js"></script>
     <script defer src="valid.js"></script>
     <script type="module" src="table.js"></script>
@@ -15,6 +15,7 @@
             Имя наездника:
             <input name="firstNameRider" type="text">
         </label>
+
         <label>
             Фамилия наездника:
             <input name="lastNameRider" type="text">
@@ -22,12 +23,12 @@
 
         <label>
             Дата рождения наездника:
-            <input name="dateBirthdayRider" type="date">
+            <input name="dateBirthdayRider" id="dateBirthdayRider" type="date">
             <!--<input name="age-rider" type="number" min="16" max="45" required>-->
         </label>
         <label>
             Телефон:
-            <input id="phone" placeholder="Телефон" name="phone" type="tel">
+            <input id="phone" placeholder="Телефон" name="phone" pattern="^\+7[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}$">
         </label>
         <label>
             E-mail:
@@ -49,7 +50,7 @@
             Порода лошади:
             <input name="horseBreed" type="text">
         </label>
-
+        <label>Какой город вы представляете?</label>
         <select name="city">
             <option value="khv">Хабаровск</option>
             <option value="kms">Комсомольск на Амуре</option>
@@ -58,7 +59,7 @@
             <option value="bel">Белогорск</option>
         </select>
 
-        <fieldset class="flex-column">
+        <fieldset class="flex-column__competition">
             <legend>Выберите соревнования</legend>
             <label>
                 <input name="competition" value="dressage" type="checkbox">
@@ -110,7 +111,6 @@
                 <th>Порода</th>
                 <th>Город</th>
                 <th>Выбранные соревнования</th>
-                <th>Телефон</th>
                 <th>Участие ранее</th>
             </tr>
         </thead>

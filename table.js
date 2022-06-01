@@ -33,19 +33,9 @@ Array.from(myJSON.members).forEach(member => {
     let td10 = document.createElement('td')
     td10.innerHTML = member.competition
     tr.appendChild(td10);
+    let td11 = document.createElement('td')
+    td11.innerHTML = member.participationEarlier
+    tr.appendChild(td11);
 
     document.getElementById('table').appendChild(tr);
     })
-  //const tr = $('<tr/>');
-  //tr.append(`<td>${item.members.first-name-rider} ${item.members.last-name-rider}</td>`);
-  //tr.append(`<td>${item.members.db-rider}</td>`);
-  //tr.append(`<td>${item.members.phone}</td>`);
-  //tr.append(`<td>${item.members.email}</td>`);
-  //tr.append(`<td>${item.members.name-horse}</td>`);
-  //tr.append(`<td>${item.members.age-horse}</td>`);
-  //tr.append(`<td>${item.members.mast-horse}</td>`);
-  //tr.append(`<td>${item.members.horse-breed}</td>`);
-  //tr.append(`<td>${item.members.city}</td>`);
-  //tr.append(`<td>${item.members.competition}</td>`);
-  //tr.append(`<td>${item.members.participation-earlier}</td>`);
-  //$('#table').append(tr);
