@@ -4,13 +4,10 @@ const RUSSIAN_REGEX = /^[А-Яа-я]{2,}$/;
 
 window.addEventListener('load', () => {
     const inputs = Array.from(document.querySelectorAll('#applicant-form input'));
-    console.log(inputs);
+   
 
     inputs.filter(input => textFields.includes(input.name))
         .forEach(input => input.pattern = '^[А-Я][а-я]{2,}$');
-
-    // console.log(Array.from(document.querySelectorAll('#applicant-form input'))
-    //     .map((input)=>({name:input.name, pattern: input.pattern})));
 
     inputs.filter(input => requiredFields.includes(input.name))
         .forEach(input => input.required = true);
@@ -35,35 +32,17 @@ window.addEventListener('load', () => {
         document.getElementById('dateBirthdayRider').setAttribute("max", maxDateMy);
     });
 
-    const firstNameRider = document.querySelector('input[name=firstNameRider]');
-    firstNameRider.addEventListener('input', () => {
-        validationTypeText(firstNameRider);
-    });
-    const lastNameRider = document.querySelector('input[name=lastNameRider]');
-    lastNameRider.addEventListener('input', () => {
-        validationTypeText(lastNameRider);
-    });
-    const nameHorse = document.querySelector('input[name=nameHorse]');
-    nameHorse.addEventListener('input', () => {
-        validationTypeText(nameHorse);
-    });
-    const colorHorse = document.querySelector('input[name=colorHorse]');
-    colorHorse.addEventListener('input', () => {
-        validationTypeText(colorHorse);
-    });
-    const horseBreed = document.querySelector('input[name=horseBreed]');
-    horseBreed.addEventListener('input', () => {
-        validationTypeText(horseBreed);
-    });
+    //const firstNameRider = document.querySelector('input[name=firstNameRider]');
+    //firstNameRider.addEventListener('input', () => {
+    //    validationTypeText(firstNameRider);
+    //});
+    
 
     const PHONE_PATTERN = /^8\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
 
     const phoneNumber = document.querySelector('input[name=phone]');
     phoneNumber.pattern = PHONE_PATTERN.source;
     phoneNumber.addEventListener('input', () => {
-
-        // console.log('is vadlid',phoneNumber.value.match(phoneNumber.pattern));
-        console.log(phoneNumber.value);
 
         if (!phoneNumber.value.match(RegExp(phoneNumber.pattern))) {
             phoneNumber.style.borderColor = "red";
@@ -72,44 +51,49 @@ window.addEventListener('load', () => {
         }
     });
 
-    //let typeTextInputs = [];
-    //inputs.forEach(input => {
-    //    if (input.type == 'text') {
-    //        typeTextInputs.push(input);
-    //    }
-    //});
-    //console.log(typeTextInputs);
+    let errorParagraph = null;
+    const errors = {}
 
+    function validationTypeText(input) {
+        const russian = !RegExp(input.pattern).test(input.value);
+        const isFilled = !input.value;
 
-    //const typeTextInputs = Array.from(document.querySelector('input[type=text]'));
-    //console.log(typeTextInputs);
-    //typeTextInputs.forEach(input => {
-    //    input.addEventListener('input', () => {
-    //        validationTypeText(input);
-    //    })
-    //});
+        // errors[input.name]
+        // console.log(input.name, errorParagraph)
+        errorParagraph?.remove();
+        if (isFilled && !russian && !errorParagraph) {
+            errorParagraph = document.createElement('p');
+            errorParagraph.style.color = "#FF0000";
+            errorParagraph.innerText = "Заполните поле кирилицей, начиная с заглавной буквы"
+
+            // input.validity.setCustomValidity('')
+            errorParagraph.classList.add('input-error');
+            input.parentNode.appendChild(errorParagraph);
+        } else if (russian && errorParagraph && !isFilled) {
+            errorParagraph.remove();
+        }
+    }
+
+    //inputs.forEach(input => input.addEventListener('blur', validationTypeText));
+
+    inputs.forEach(input => input.addEventListener('blur', () => {
+        const russian = !RegExp(input.pattern).test(input.value);
+        const isFilled = !input.value;
+
+        errorParagraph?.remove();
+        if (isFilled && !russian && !errorParagraph) {
+            errorParagraph = document.createElement('p');
+            errorParagraph.style.color = "#FF0000";
+            errorParagraph.innerText = "Заполните поле кирилицей, начиная с заглавной буквы"
+
+            errorParagraph.classList.add('input-error');
+            input.parentNode.appendChild(errorParagraph);
+        } else if (russian && errorParagraph) {
+            errorParagraph.remove();
+        }
+    }));
 
 });
-let errorParagraph = null;
-const errors = {}
 
-function validationTypeText(input) {
-    const russian = !!input.value.match(RUSSIAN_REGEX);
-    const isFilled = input.value.length > 0;
-
-    // errors[input.name]
-    // console.log(input.name, errorParagraph)
-    errorParagraph?.remove();
-    if (isFilled && !russian && !errorParagraph) {
-        errorParagraph = document.createElement('p');
-        errorParagraph.style.color = "#FF0000";
-        errorParagraph.innerText = "Заполните поле кирилицей, начиная с заглавной буквы"
-
-        // input.validity.setCustomValidity('')
-        input.parentNode.appendChild(errorParagraph);
-    } else if (russian && errorParagraph) {
-        errorParagraph.remove();
-    }
-}
      
 

@@ -1,20 +1,10 @@
 function getFormData(form) {
     const formData = new FormData(form);
-
     const res = {
     };
-
-    formData.forEach((value, key) => {
-        if (!Reflect.has(res, key)) {
-            res[key] = value;
-            return;
-        }
-        if (!Array.isArray(res[key])) {
-            res[key] = [res[key]];
-        }
-        res[key].push(value);
+    Array.from(formData.keys()).forEach(key => {
+        res[key] = formData.getAll(key);
     });
-
     return res;
 }
 
@@ -37,21 +27,16 @@ function useXmlHttpRequest(data) {
     request.onloadend = () => {
         console.log('Succeed!')
         console.log(request.response)
+        alert("Ваша заявка принята");
+        window.location.reload();
     }
 }
 
 window.addEventListener('load', () => {
-    // document.forms.applicantForm OR
     const applicantForm = document.forms.applicantForm;
     applicantForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const data = getFormData(document.forms.applicantForm);
-
-        //value.competition = data.getAll("competition");
-
-        document.getElementById('sended-data').innerText = JSON.stringify(data);
-        useXmlHttpRequest(data);
+        useXmlHttpRequest(data);        
     })
-    const applicantFormSubmit = document.getElementById('applicantFormSubmit');
-
 });
