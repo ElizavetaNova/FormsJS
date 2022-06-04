@@ -1,17 +1,15 @@
 const requiredFields = ['firstNameRider', 'lastNameRider', 'dateBirthdayRider', 'email', 'nameHorse', 'city'];
 const textFields = ['firstNameRider', 'lastNameRider', 'nameHorse', 'colorHorse', 'horseBreed'];
 const RUSSIAN_REGEX = /^[А-Яа-я]{2,}$/;
+const inputs = Array.from(document.querySelectorAll('#applicant-form input'));
+let errorParagraph;
 
 window.addEventListener('load', () => {
-    const inputs = Array.from(document.querySelectorAll('#applicant-form input'));
-   
-
     inputs.filter(input => textFields.includes(input.name))
         .forEach(input => input.pattern = '^[А-Я][а-я]{2,}$');
 
     inputs.filter(input => requiredFields.includes(input.name))
         .forEach(input => input.required = true);
-
 
     const dateBirthday = document.querySelector('input[name=dateBirthdayRider]');
     dateBirthday.addEventListener('click', () => {
@@ -26,74 +24,55 @@ window.addEventListener('load', () => {
             day = '0' + day.toString();
 
         let maxYear = dtToday.getFullYear() - 16;
-
         let maxDateMy = maxYear + '-' + month + '-' + day;
-
         document.getElementById('dateBirthdayRider').setAttribute("max", maxDateMy);
     });
 
-    //const firstNameRider = document.querySelector('input[name=firstNameRider]');
-    //firstNameRider.addEventListener('input', () => {
-    //    validationTypeText(firstNameRider);
-    //});
-    
+    const errors = {}
 
     const PHONE_PATTERN = /^8\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
 
     const phoneNumber = document.querySelector('input[name=phone]');
     phoneNumber.pattern = PHONE_PATTERN.source;
     phoneNumber.addEventListener('input', () => {
-
+        const inputErorr = errors[phoneNumber.name];
+        console.log(phoneNumber.pattern);
+        console.log(!phoneNumber.value.match(RegExp(phoneNumber.pattern)));
+        console.log(phoneNumber.name);
         if (!phoneNumber.value.match(RegExp(phoneNumber.pattern))) {
             phoneNumber.style.borderColor = "red";
+            createError(phoneNumber, "Введите номер телефона в формате 8(ххх)ххх-хх-хх");            
         } else {
             phoneNumber.style.borderColor = "black";
+            inputErorr?.remove();
+            errors[phoneNumber.name] = null;
         }
     });
+    inputs.filter(input => textFields.includes(input.name))
+        .forEach(input => input.addEventListener('input', () => {
 
-    let errorParagraph = null;
-    const errors = {}
+            const russian = RegExp(input.pattern).test(input.value);
+            const inputErorr = errors[input.name];
+            if (russian == false) {
+                createError(input, "Заполните поле кирилицей, начиная с заглавной буквы");
+            } else {
+                inputErorr?.remove();
+                errors[input.name] = null;
 
-    function validationTypeText(input) {
-        const russian = !RegExp(input.pattern).test(input.value);
-        const isFilled = !input.value;
+            }
+        }));
 
-        // errors[input.name]
-        // console.log(input.name, errorParagraph)
-        errorParagraph?.remove();
-        if (isFilled && !russian && !errorParagraph) {
-            errorParagraph = document.createElement('p');
-            errorParagraph.style.color = "#FF0000";
-            errorParagraph.innerText = "Заполните поле кирилицей, начиная с заглавной буквы"
+    function createError(input, text) {
+        const errorElement = errors[input.name] ?? document.createElement('p');
+        errorElement.innerText = text;
 
-            // input.validity.setCustomValidity('')
-            errorParagraph.classList.add('input-error');
-            input.parentNode.appendChild(errorParagraph);
-        } else if (russian && errorParagraph && !isFilled) {
-            errorParagraph.remove();
-        }
+        if (errors[input.name]) return;
+
+        errorElement.classList.add('input-error');
+        input.parentNode.appendChild(errorElement);
+        errors[input.name] = errorElement;
     }
-
-    //inputs.forEach(input => input.addEventListener('blur', validationTypeText));
-
-    inputs.forEach(input => input.addEventListener('blur', () => {
-        const russian = !RegExp(input.pattern).test(input.value);
-        const isFilled = !input.value;
-
-        errorParagraph?.remove();
-        if (isFilled && !russian && !errorParagraph) {
-            errorParagraph = document.createElement('p');
-            errorParagraph.style.color = "#FF0000";
-            errorParagraph.innerText = "Заполните поле кирилицей, начиная с заглавной буквы"
-
-            errorParagraph.classList.add('input-error');
-            input.parentNode.appendChild(errorParagraph);
-        } else if (russian && errorParagraph) {
-            errorParagraph.remove();
-        }
-    }));
-
 });
 
-     
+
 
