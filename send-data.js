@@ -16,7 +16,6 @@ async function useFetch(data) {
         },
         body: JSON.stringify(data)
     })
-    console.log(response.json())
 }
 
 function useXmlHttpRequest(data) {
@@ -25,8 +24,6 @@ function useXmlHttpRequest(data) {
     request.setRequestHeader("Content-Type", "application/json");
     request.send(JSON.stringify(data));
     request.onloadend = () => {
-        console.log('Succeed!')
-        console.log(request.response)
         alert("Ваша заявка принята");
         window.location.reload();
     }

@@ -14,5 +14,5 @@ Array.from(data.members).forEach(member => {
                       <td>${member.city}</td>
                       <td>${member.competition}</td>
                       <td>${member.participationEarlier}</td>`
-    document.getElementById('table').appendChild(tr);
+    document.getElementById('table-body').appendChild(tr);
 });

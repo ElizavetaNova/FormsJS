@@ -54,3 +54,6 @@ select{
     margin-bottom:5px;
     font-size: 16px;
 }
+.invalid-input{
+    border-color: #920808;
+}
