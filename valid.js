@@ -1,7 +1,7 @@
 const requiredFields = ['firstNameRider', 'lastNameRider', 'dateBirthdayRider', 'email', 'nameHorse', 'city', 'participationEarlier'];
 const textFields = ['firstNameRider', 'lastNameRider', 'nameHorse', 'colorHorse', 'horseBreed'];
-const RUSSIAN_REGEX = /^[А-Яа-я]{2,}$/;
-const inputs = Array.from(document.querySelectorAll('#applicant-form input'));
+const inputs = Array.from(document.querySelectorAll('.flex-column input'));
+const PHONE_PATTERN = /^8\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
 
 window.addEventListener('load', () => {
     inputs.filter(input => textFields.includes(input.name))
@@ -13,9 +13,7 @@ window.addEventListener('load', () => {
     setMaxMinDate();
 
     const errors = {}
-
-    const PHONE_PATTERN = /^8\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
-
+        
     const phoneNumber = document.querySelector('input[name=phone]');
     phoneNumber.pattern = PHONE_PATTERN.source;
     phoneNumber.addEventListener('input', () => {
@@ -73,7 +71,9 @@ function setMaxMinDate() {
     if (day < 10)
         day = '0' + day.toString();
 
-    const maxYear = dtToday.getFullYear() - 16;
+    const minYearsOld = 16;
+
+    const maxYear = dtToday.getFullYear() - minYearsOld;
     const maxDateMy = `${maxYear}-${month}-${day}`;
     dateBirthday.setAttribute("max", maxDateMy);
 }

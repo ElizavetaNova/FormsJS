@@ -1,7 +1,7 @@
-const myJSON = await fetch('/json/data.json');
+const myJSON = await fetch('http://localhost:3000/members');
 const data = await myJSON.json();
 
-Array.from(data.members).forEach(member => {
+data.forEach(member => {
     const tr = document.createElement('tr');
     tr.innerHTML = `<td>${member.firstNameRider} ${member.lastNameRider}</td>
                       <td>${member.dateBirthdayRider}</td>
