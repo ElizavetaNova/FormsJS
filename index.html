@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="styles/style.css" rel="stylesheet">
+    <script defer src="send-data.js"></script>
+    <script defer src="valid.js"></script>
+    <script type="module" src="table.js"></script>
+</head>
+<body>
+    <form class="flex-column" name="applicantForm" action="#">
+        <label>
+            Имя наездника:
+            <input name="firstNameRider" type="text">
+        </label>
+
+        <label>
+            Фамилия наездника:
+            <input name="lastNameRider" type="text">
+        </label>
+        
+        <label>
+            Дата рождения наездника:
+            <input name="dateBirthdayRider" type="date">
+        </label>
+        
+        <label>
+            Телефон:
+            <input name="phone"                    
+                   type="tel" 
+                   placeholder="Телефон"
+                   title="Введите номер в формате +7xxxXXxx, где x - это цифры">
+        </label>
+        
+        <label>
+            E-mail:
+            <input name="email" type="email" placeholder="Почта">
+        </label>
+        
+        <label>
+            Кличка лошади:
+            <input name="nameHorse" type="text">
+        </label>
+        
+        <label>
+            Возраст лошади:
+            <input name="ageHorse" type="number">
+        </label>
+        
+        <label>
+            Масть лошади:
+            <input name="colorHorse" type="text">
+        </label>
+        
+        <label>
+            Порода лошади:
+            <input name="horseBreed" type="text">
+        </label>
+        
+        <label>Какой город вы представляете?</label>
+        <select name="city">
+            <option value="khv">Хабаровск</option>
+            <option value="kms">Комсомольск на Амуре</option>
+            <option value="vdk">Владивосток</option>
+            <option value="blg">Благовещенск</option>
+            <option value="bel">Белогорск</option>
+        </select>
+
+        <fieldset class="flex-column__competition">
+            <legend>Выберите соревнования</legend>
+            <label>
+                <input name="competition" value="dressage" type="checkbox">
+                Выездка
+            </label>
+            <label>
+                <input name="competition" value="jumping" type="checkbox">
+                Конкур
+            </label>
+            <label>
+                <input name="competition" value="racing" type="checkbox">
+                Скачки
+            </label>
+            <label>
+                <input name="competition" value="triathlon" type="checkbox">
+                Троеборье
+            </label>
+            <label>
+                <input name="competition" value="Vaulting" type="checkbox">
+                Вольтижировка
+            </label>
+        </fieldset>
+        
+        <fieldset name="Majority" class="flex-column">
+            <legend>Вы учавствовали ранее в наших соревноваиях?</legend>
+            <label>
+                <input name="participationEarlier" value="yes" type="radio" checked>
+                Да
+            </label>
+            <label>
+                <input name="participationEarlier" value="no" type="radio">
+                Нет
+            </label>
+        </fieldset>
+        <p id="sended-data"></p>
+        <button class="flex-column__submit">
+            Sumbit
+        </button>
+    </form>
+    <table class="table">
+        <thead class="">
+            <tr>
+                <th>Наездник</th>
+                <th>Дата рождения</th>
+                <th>Телефон</th>
+                <th>e-mail</th>
+                <th>Кличка лошади</th>
+                <th>Возраст лошади</th>
+                <th>Масть</th>
+                <th>Порода</th>
+                <th>Город</th>
+                <th>Выбранные соревнования</th>
+                <th>Участие ранее</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+</body>
+
+</html>

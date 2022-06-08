@@ -1,0 +1,157 @@
+{
+  "members": [
+    {
+      "firstNameRider": "Никита",
+      "lastNameRider": "Когор",
+      "dateBirthdayRider": "2022-04-27",
+      "phone": "+79245689587",
+      "email": "jhn@ma.ru",
+      "nameHorse": "Жора",
+      "ageHorse": "3",
+      "colorHorse": "Вороная",
+      "horseBreed": "Фриз",
+      "city": "khv",
+      "competition": [
+        "dressage",
+        "jumping"
+      ],
+      "participationEarlier": "yes",
+      "id": 1
+    },
+    {
+      "firstNameRider": "Viliam",
+      "lastNameRider": "Golotov",
+      "dateBirthdayRider": "2000-11-22",
+      "phone": "+79995688965",
+      "email": "gol@ya.ru",
+      "nameHorse": "Golop",
+      "ageHorse": "8",
+      "colorHorse": "Grey",
+      "horseBreed": "Appoluza",
+      "city": "blg",
+      "competition": [
+        "dressage",
+        "jumping",
+        "triathlon"
+      ],
+      "participationEarlier": "yes",
+      "id": 2
+    },
+    {
+      "firstNameRider": "Роман",
+      "lastNameRider": "Ноликов",
+      "dateBirthdayRider": "2005-06-16",
+      "phone": "8(365)596-33-33",
+      "email": "gol@ya.ru",
+      "nameHorse": "Зорька",
+      "ageHorse": "10",
+      "colorHorse": "Пегая",
+      "horseBreed": "Русская",
+      "city": "kms",
+      "competition": "racing",
+      "participationEarlier": "no",
+      "id": 3
+    },
+    {
+      "firstNameRider": "Игорь",
+      "lastNameRider": "Коркин",
+      "dateBirthdayRider": "1997-01-29",
+      "phone": "8(365)666-33-33",
+      "email": "ig@ma.ru",
+      "nameHorse": "Эхо",
+      "ageHorse": "9",
+      "colorHorse": "Гнедая",
+      "horseBreed": "Голландец",
+      "city": "vdk",
+      "competition": "Vaulting",
+      "participationEarlier": "yes",
+      "id": 4
+    },
+    {
+      "firstNameRider": "Дмитрий",
+      "lastNameRider": "Шолохов",
+      "dateBirthdayRider": "2000-07-12",
+      "phone": "8(256)965-53-88",
+      "email": "sho@ma.ru",
+      "nameHorse": "Бронза",
+      "ageHorse": "5",
+      "colorHorse": "Гнедая",
+      "horseBreed": "Смешанная",
+      "city": "kms",
+      "competition": "triathlon",
+      "participationEarlier": "no",
+      "id": 5
+    },
+    {
+      "firstNameRider": "Владислав",
+      "lastNameRider": "Горный",
+      "dateBirthdayRider": "2006-05-02",
+      "phone": "8(365)666-33-33",
+      "email": "sho@ma.ru",
+      "nameHorse": "Дункан",
+      "ageHorse": "5",
+      "colorHorse": "Серая",
+      "horseBreed": "Апполуза",
+      "city": "vdk",
+      "competition": "dressage",
+      "participationEarlier": "no",
+      "id": 6
+    },
+    {
+      "firstNameRider": "Алина",
+      "lastNameRider": "Ковина",
+      "dateBirthdayRider": "2005-10-13",
+      "phone": "8(365)596-33-33",
+      "email": "pol@hu.ru",
+      "nameHorse": "Рига",
+      "ageHorse": "8",
+      "colorHorse": "Вороная",
+      "horseBreed": "Фриз",
+      "city": "khv",
+      "competition": "triathlon",
+      "participationEarlier": "yes",
+      "id": 7
+    },
+    {
+      "firstNameRider": [
+        "Дарья"
+      ],
+      "lastNameRider": [
+        "Мальцева"
+      ],
+      "dateBirthdayRider": [
+        "2004-10-07"
+      ],
+      "phone": [
+        "8(365)596-33-22"
+      ],
+      "email": [
+        "daha@ma.ru"
+      ],
+      "nameHorse": [
+        "Кира"
+      ],
+      "ageHorse": [
+        "9"
+      ],
+      "colorHorse": [
+        "Серая"
+      ],
+      "horseBreed": [
+        "Русская"
+      ],
+      "city": [
+        "blg"
+      ],
+      "competition": [
+        "dressage",
+        "jumping",
+        "racing"
+      ],
+      "participationEarlier": [
+        "yes"
+      ],
+      "id": 8
+    }
+  ]
+}
